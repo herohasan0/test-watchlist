@@ -32,49 +32,96 @@ export default async function handler(
     fs.rmdirSync(folderPath);
   }
 
-  if (!fs.existsSync(folderPath)) {
-    const axiosPromises = symbols.map((symbol) =>
+  const handleServiceCallForOverview = async () => {
+    const promisesForOverview = symbols.map((symbol) =>
       services.overview({ symbol })
     );
+    console.log("handleServiceCallForOverview");
 
-    console.log("service call here");
-    await Promise.all(axiosPromises)
+    await Promise.all(promisesForOverview)
       .then((responses) => {
         symbols.forEach((symbol, index) => {
           companyData[symbol] = {
-            name: responses[index].data.Name || "name placeholder",
-            description:
-              responses[index].data.Description || "desc placeholder",
-            address: responses[index].data.Address || "address placeholder",
-            dividendYield:
-              responses[index].data.DividendYield || "dividedyield placeholder",
-            marketCapitalization:
-              responses[index].data.MarketCapitalization ||
-              "marketcapital placeholder",
+            ...companyData[symbol],
+            tableData: {
+              name: responses[index].data.Name || "name placeholder",
+              description:
+                responses[index].data.Description || "desc placeholder",
+              address: responses[index].data.Address || "address placeholder",
+              dividendYield:
+                responses[index].data.DividendYield ||
+                "dividedyield placeholder",
+              marketCapitalization:
+                responses[index].data.MarketCapitalization ||
+                "marketcapital placeholder",
+            },
           };
         });
+      })
+      .then(() => {
+        setTimeout(() => handleServiceCallForTimeSeries(), 60000);
       })
       .catch((error) => {
         console.error("An error occurred:", error);
       });
+  };
 
-    Object.assign(companyData, { fileName });
+  const handleServiceCallForTimeSeries = async () => {
+    const promisesForTimeSeries = symbols.map((symbol) =>
+      services.timeSeries({ symbol })
+    );
+    console.log("handleServiceCallForTimeSeries");
 
-    const jsonData = JSON.stringify(companyData, null, 2);
+    await Promise.all(promisesForTimeSeries)
+      .then((response: any) => {
+        console.log("response", response);
+        symbols.forEach((symbol, index) => {
+          const xAxis = Object?.keys(
+            response[index]?.data["Time Series (Daily)"]
+          );
+          const values = Object?.values(
+            response[index]?.data["Time Series (Daily)"]
+          );
+          const open = values.map((e: any) => e["1. open"]);
+          const high = values.map((e: any) => e["2. high"]);
+          const low = values.map((e: any) => e["3. low"]);
+          const close = values.map((e: any) => e["4. close"]);
 
-    try {
-      if (fs.existsSync(folderPath)) {
-        removeFolderRecursive(folderPath);
+          companyData[symbol] = {
+            ...companyData[symbol],
+            chartData: {
+              xAxis,
+              open,
+              high,
+              low,
+              close,
+            },
+          };
+        });
+      })
+      .then(() => {
+        createDataFile();
+      });
+  };
+
+  const createDataFile = () => {
+    if (!fs.existsSync(folderPath)) {
+      Object.assign(companyData, { fileName });
+      const jsonData = JSON.stringify(companyData, null, 2);
+
+      try {
+        if (fs.existsSync(folderPath)) {
+          removeFolderRecursive(folderPath);
+        }
+
+        fs.mkdirSync(folderPath, { recursive: true });
+        fs.writeFileSync(filePath, jsonData);
+      } catch (error) {
+        console.error("Error creating JSON file:", error);
+        res.status(500).json({ error: `Error creating JSON file: ${error}` });
       }
-
-      fs.mkdirSync(folderPath, { recursive: true });
-      fs.writeFileSync(filePath, jsonData);
-    } catch (error) {
-      console.error("Error creating JSON file:", error);
-      res.status(500).json({ error: `Error creating JSON file: ${error}` });
     }
-  }
-
+  };
   fs.readdir(folderPath, (err, files) => {
     if (err) {
       console.error("Error reading folder:", err);
@@ -90,4 +137,6 @@ export default async function handler(
     const fileContent = fs.readFileSync(filePath, "utf-8");
     return res.status(200).send(fileContent);
   });
+
+  // handleServiceCallForOverview();
 }

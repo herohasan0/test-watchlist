@@ -13,30 +13,6 @@ import TableCell from "./TableCell";
 
 const columnHelper = createColumnHelper<TableRow>();
 
-// const defaultData: Person[] = [
-//   {
-//     name: "tanner",
-//     description: "linsley",
-//     address: "In Relationship",
-//     dividendYield: "50",
-//     marketCapitalization: "Demo",
-//   },
-//   {
-//     name: "tandy",
-//     description: "miller",
-//     address: "Single",
-//     dividendYield: "80",
-//     marketCapitalization: "Demo",
-//   },
-//   {
-//     name: "joe",
-//     description: "dirte",
-//     address: "Complicated",
-//     dividendYield: "10",
-//     marketCapitalization: "Demo",
-//   },
-// ];
-
 const columns: any = [
   columnHelper.accessor("name", {
     header: "Name",
@@ -68,7 +44,10 @@ export default function TableComponent({
   tableData: TableData;
 }) {
   const values = Object.values(tableData);
-  const [data, setData] = useState(() => [...values]);
+  const datas = values.map((e: any) => e.tableData);
+
+  const [data, setData] = useState(() => [...datas]);
+
   const rerender = useReducer(() => ({}), {})[1];
 
   const table = useReactTable({

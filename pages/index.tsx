@@ -38,7 +38,7 @@ export default function Home() {
         <TableComponent tableData={data} />
       </Container>
       <Container>
-        <Chart />
+        <Chart chartData={data} />
       </Container>
     </main>
   );

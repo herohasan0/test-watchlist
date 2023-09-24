@@ -6,11 +6,30 @@ type TableRow = {
   marketCapitalization: string;
 };
 
-type TableData = {
-  fileName: string;
-  AAPL: TableRow;
-  MSFT: TableRow;
-  IBM: TableRow;
+type ChartRow = {
+  xAxis: string[];
+  open: string[];
+  low: string[];
+  high: string[];
+  close: string[];
 };
 
-export { TableRow, TableData };
+type DataRow = {
+  tableData: TableRow;
+  chartData: ChartRow;
+};
+
+type TableData = {
+  fileName: string;
+  AAPL: {
+    tableData: TableRow;
+  };
+  MSFT: {
+    tableData: TableRow;
+  };
+  IBM: {
+    tableData: TableRow;
+  };
+};
+
+export { TableRow, TableData, DataRow, ChartRow };

@@ -2,19 +2,32 @@ import React, { useRef } from "react";
 import * as Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const options: Highcharts.Options = {
-  title: {
-    text: "",
-  },
-  series: [
-    {
-      type: "line",
-      data: [1, 2, 3],
-    },
-  ],
-};
-
 export default function Chart(props: HighchartsReact.Props) {
+  const xAxis = props.chartData.AAPL.chartData.xAxis;
+  const series = props.chartData.AAPL.chartData.open.map((a: string) =>
+    parseFloat(a)
+  );
+
+  const options: Highcharts.Options = {
+    tooltip: {
+      valueDecimals: 2,
+    },
+    title: {
+      text: "",
+    },
+    xAxis: {
+      categories: xAxis,
+      type: "linear",
+    },
+    series: [
+      {
+        name: "AAPL",
+        type: "line",
+        data: series,
+      },
+    ],
+  };
+
   const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
   return (
     <div className="w-full">

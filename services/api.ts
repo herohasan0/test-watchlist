@@ -15,4 +15,9 @@ export const services = {
         `query?function=OVERVIEW&apikey=${process.env.NEXT_PUBLIC_TOKEN}&symbol=${symbol}`
       )
       .then((res) => res),
+
+  timeSeries: async ({ symbol }: { symbol: string }) =>
+    api.get(
+      `query?function=TIME_SERIES_DAILY&outputsize=full%20&apikey=${process.env.NEXT_PUBLIC_TOKEN}&symbol=${symbol}`
+    ),
 };
