@@ -15,8 +15,8 @@ export default function Home() {
   }: { isLoading: boolean; error: any; data: any } = useQuery(
     "overview",
     () => {
-      axios.get("/api/companies").then((res) => {
-        console.log("res", res);
+      return axios.get("/api/companies").then((res) => {
+        return res.data;
       });
     }
   );
@@ -29,7 +29,7 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
-      <TableComponent />
+      <TableComponent tableData={data} />
     </main>
   );
 }

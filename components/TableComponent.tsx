@@ -8,47 +8,41 @@ import {
 } from "@tanstack/react-table";
 
 import React, { useState, useReducer } from "react";
+import { TableData, TableRow } from "@/types/data";
 
-type Person = {
-  name: string;
-  description: string;
-  address: string;
-  dividendYield: string;
-  marketCapitalization: string;
-};
+const columnHelper = createColumnHelper<TableRow>();
 
-const columnHelper = createColumnHelper<Person>();
+// const defaultData: Person[] = [
+//   {
+//     name: "tanner",
+//     description: "linsley",
+//     address: "In Relationship",
+//     dividendYield: "50",
+//     marketCapitalization: "Demo",
+//   },
+//   {
+//     name: "tandy",
+//     description: "miller",
+//     address: "Single",
+//     dividendYield: "80",
+//     marketCapitalization: "Demo",
+//   },
+//   {
+//     name: "joe",
+//     description: "dirte",
+//     address: "Complicated",
+//     dividendYield: "10",
+//     marketCapitalization: "Demo",
+//   },
+// ];
 
-const defaultData: Person[] = [
-  {
-    name: "tanner",
-    description: "linsley",
-    address: "In Relationship",
-    dividendYield: "50",
-    marketCapitalization: "Demo",
-  },
-  {
-    name: "tandy",
-    description: "miller",
-    address: "Single",
-    dividendYield: "80",
-    marketCapitalization: "Demo",
-  },
-  {
-    name: "joe",
-    description: "dirte",
-    address: "Complicated",
-    dividendYield: "10",
-    marketCapitalization: "Demo",
-  },
-];
-
-const columns = [
+const columns: any = [
   columnHelper.accessor("name", {
     header: "Name",
   }),
   columnHelper.accessor("description", {
     header: "Description",
+    cell: (props) => <span>{`${props.getValue()?.substring(0, 10)}...`}</span>,
   }),
   columnHelper.accessor("address", {
     header: "Address",
@@ -61,8 +55,13 @@ const columns = [
   }),
 ];
 
-export default function TableComponent() {
-  const [data, setData] = useState(() => [...defaultData]);
+export default function TableComponent({
+  tableData,
+}: {
+  tableData: TableData;
+}) {
+  const values = Object.values(tableData);
+  const [data, setData] = useState(() => [...values]);
   const rerender = useReducer(() => ({}), {})[1];
 
   const table = useReactTable({
@@ -72,34 +71,58 @@ export default function TableComponent() {
   });
 
   return (
-    <table>
-      <thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table.getRowModel().rows.map((row) => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map((cell) => (
-              <td key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="shadow-lg bg-white rounded-md p-4">
+      <div className="flex items-center space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"
+          />
+        </svg>
+        <span className="text-xl font-bold">Watchlist</span>
+      </div>
+      <table className="">
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
