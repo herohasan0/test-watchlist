@@ -1,7 +1,6 @@
 import Container from "@/components/Container";
 import Chart from "@/components/Chart";
 import TableComponent from "@/components/TableComponent";
-import { services } from "@/services/api";
 import axios from "axios";
 import { Roboto } from "next/font/google";
 import React from "react";
