@@ -153,5 +153,5 @@ export default async function handler(
   };
 
   sendFileContent();
-  // handleServiceCallForOverview();
+  handleServiceCallForOverview();
 }
