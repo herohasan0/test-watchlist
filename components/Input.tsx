@@ -1,6 +1,12 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 
-export default function Input({ value, onChange, placeholder }: any) {
+type InputType = {
+  value: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+};
+
+export default function Input({ value, onChange, placeholder }: InputType) {
   return (
     <input
       value={value}

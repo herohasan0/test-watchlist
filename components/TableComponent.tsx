@@ -5,13 +5,13 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import React, { useState } from "react";
-import { TableData, TableRow } from "@/types/data";
+import { DataRow, TableData, TableRow } from "@/types/data";
 import TableCell from "./TableCell";
 import Search from "./Search";
 
 const columnHelper = createColumnHelper<TableRow>();
 
-const columns: any = [
+const columns = [
   columnHelper.accessor("name", {
     header: "Name",
     cell: (props) => <TableCell value={props.getValue()} />,
@@ -42,7 +42,9 @@ export default function TableComponent({
   tableData: TableData;
 }) {
   const values = Object.values(tableData);
-  const datas = values.map((e: any) => e.tableData);
+  const datas = values.map((e: any) => {
+    return e.tableData;
+  });
 
   const [data, setData] = useState(() => [...datas]);
 

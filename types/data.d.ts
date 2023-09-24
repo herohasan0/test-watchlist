@@ -20,7 +20,6 @@ type DataRow = {
 };
 
 type TableData = {
-  fileName: string;
   AAPL: {
     tableData: TableRow;
   };

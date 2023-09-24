@@ -3,6 +3,11 @@ import * as Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import SelectionSection from "./SelectionSection";
 
+type DropdownOption = {
+  label: string;
+  value: string;
+};
+
 export default function Chart(props: HighchartsReact.Props) {
   const [optionsSelected, setOptionsSelected] = useState({
     label: "Open",
@@ -54,11 +59,11 @@ export default function Chart(props: HighchartsReact.Props) {
 
   const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
 
-  const stocksSelectionHandler = (e: any) => {
+  const stocksSelectionHandler = (e: DropdownOption[]) => {
     setStocksSelected(e);
   };
 
-  const optionsSelectionHandler = (e: any) => {
+  const optionsSelectionHandler = (e: DropdownOption) => {
     setOptionsSelected(e);
   };
 

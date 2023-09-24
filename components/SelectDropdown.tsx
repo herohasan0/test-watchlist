@@ -1,5 +1,23 @@
-import React from "react";
-import Select from "react-select";
+import React, { ChangeEvent } from "react";
+import Select, { ActionMeta, MultiValue, SingleValue } from "react-select";
+
+type Option = {
+  label: string;
+  value: string;
+};
+
+type Dropdown = {
+  options: Option[];
+  defaultSelect: Option;
+  handleChange:
+    | ((
+        newValue: MultiValue<Option> | SingleValue<Option>,
+        actionMeta: ActionMeta<Option>
+      ) => void)
+    | undefined;
+  isMulti?: boolean;
+  placeholder?: string;
+};
 
 const SelectDropdown = ({
   options,
@@ -7,7 +25,7 @@ const SelectDropdown = ({
   handleChange,
   isMulti = false,
   placeholder = "Select...",
-}: any) => {
+}: Dropdown) => {
   return (
     <Select
       isMulti={isMulti}
