@@ -78,7 +78,7 @@ export default function TableComponent({
   });
 
   return (
-    <div className="shadow-lg bg-white rounded-2xl p-8">
+    <div>
       <div className="flex items-center space-x-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@ export default function TableComponent({
           (3)Stocks
         </div>
       </div>
-      <table className="mt-4">
+      <table className="mt-4 w-full">
         <thead className="bg-custom-gray-50 text-custom-gray-60/60 rounded-lg">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
