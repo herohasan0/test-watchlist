@@ -40,26 +40,35 @@ export default async function handler(
 
     await Promise.all(promisesForOverview)
       .then((responses) => {
-        symbols.forEach((symbol, index) => {
-          companyData[symbol] = {
-            ...companyData[symbol],
-            tableData: {
-              name: responses[index].data.Name || "name placeholder",
-              description:
-                responses[index].data.Description || "desc placeholder",
-              address: responses[index].data.Address || "address placeholder",
-              dividendYield:
-                responses[index].data.DividendYield ||
-                "dividedyield placeholder",
-              marketCapitalization:
-                responses[index].data.MarketCapitalization ||
-                "marketcapital placeholder",
-            },
-          };
+        const isValid = symbols.map((symbol, index) => {
+          if (
+            responses[index].data.Name &&
+            responses[index].data.Description &&
+            responses[index].data.Address &&
+            responses[index].data.DividendYield &&
+            responses[index].data.MarketCapitalization
+          ) {
+            companyData[symbol] = {
+              ...companyData[symbol],
+              tableData: {
+                name: responses[index].data.Name,
+                description: responses[index].data.Description,
+                address: responses[index].data.Address,
+                dividendYield: responses[index].data.DividendYield,
+                marketCapitalization:
+                  responses[index].data.MarketCapitalization,
+              },
+            };
+            return true;
+          }
+          return false;
         });
-      })
-      .then(() => {
-        setTimeout(() => handleServiceCallForTimeSeries(), 60000);
+
+        const isAllTrue = isValid.every((e) => e === true);
+        console.log("isAllTrue", isAllTrue);
+        if (isAllTrue) {
+          setTimeout(() => handleServiceCallForTimeSeries(), 60000);
+        }
       })
       .catch((error) => {
         console.error("An error occurred:", error);
@@ -72,10 +81,9 @@ export default async function handler(
     );
     console.log("handleServiceCallForTimeSeries");
 
-    await Promise.all(promisesForTimeSeries)
-      .then((response: any) => {
-        console.log("response", response);
-        symbols.forEach((symbol, index) => {
+    await Promise.all(promisesForTimeSeries).then((response: any) => {
+      const isValid = symbols.map((symbol, index) => {
+        if (response[index]?.data["Time Series (Daily)"]) {
           const xAxis = Object?.keys(
             response[index]?.data["Time Series (Daily)"]
           );
@@ -97,46 +105,58 @@ export default async function handler(
               close,
             },
           };
-        });
-      })
-      .then(() => {
-        createDataFile();
+          return true;
+        }
+        return false;
       });
+
+      const isAllTrue = isValid.every((e) => e === true);
+      if (isAllTrue) {
+        createDataFile();
+      }
+    });
   };
 
   const createDataFile = () => {
-    if (!fs.existsSync(folderPath)) {
-      Object.assign(companyData, { fileName });
-      const jsonData = JSON.stringify(companyData, null, 2);
+    console.log("create data file");
 
-      try {
-        if (fs.existsSync(folderPath)) {
-          removeFolderRecursive(folderPath);
-        }
+    const jsonData = JSON.stringify(companyData, null, 2);
 
-        fs.mkdirSync(folderPath, { recursive: true });
-        fs.writeFileSync(filePath, jsonData);
-      } catch (error) {
-        console.error("Error creating JSON file:", error);
-        res.status(500).json({ error: `Error creating JSON file: ${error}` });
+    try {
+      if (fs.existsSync(folderPath)) {
+        removeFolderRecursive(folderPath);
       }
-    }
-  };
-  fs.readdir(folderPath, (err, files) => {
-    if (err) {
-      console.error("Error reading folder:", err);
-      res.status(500).end("Internal Server Error");
-      return;
-    }
-    if (files.length === 0) {
-      res.status(404).end("No files found in the folder");
-      return;
-    }
-    const chosenFile = files[0];
-    const filePath = path.join(folderPath, chosenFile);
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    return res.status(200).send(fileContent);
-  });
 
+      fs.mkdirSync(folderPath, { recursive: true });
+      fs.writeFileSync(filePath, jsonData);
+    } catch (error) {
+      console.error("Error creating JSON file:", error);
+      res.status(500).json({ error: `Error creating JSON file: ${error}` });
+    }
+
+    sendFileContent();
+  };
+
+  const sendFileContent = () => {
+    fs.readdir(folderPath, (err, files) => {
+      console.log("readdir here!!");
+
+      if (err) {
+        console.error("Error reading folder:", err);
+        res.status(500).end("Internal Server Error");
+        return;
+      }
+      if (files.length === 0) {
+        res.status(404).end("No files found in the folder");
+        return;
+      }
+      const chosenFile = files[0];
+      const filePath = path.join(folderPath, chosenFile);
+      const fileContent = fs.readFileSync(filePath, "utf-8");
+      return res.status(200).send(fileContent);
+    });
+  };
+
+  sendFileContent();
   // handleServiceCallForOverview();
 }
