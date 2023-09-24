@@ -4,11 +4,11 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
-import React, { useState, useReducer } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import { TableData, TableRow } from "@/types/data";
 import TableCell from "./TableCell";
 import Input from "./Input";
+import useDebounce from "@/utils/hooks";
 
 const columnHelper = createColumnHelper<TableRow>();
 
@@ -47,13 +47,29 @@ export default function TableComponent({
 
   const [data, setData] = useState(() => [...datas]);
 
-  const rerender = useReducer(() => ({}), {})[1];
-
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const [searchText, setSearchText] = useState("");
+
+  const debouncedText = useDebounce<string>(searchText, 500);
+
+  const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+  };
+
+  useEffect(() => {
+    const searchedData = [...datas].filter(
+      (e) =>
+        e.name.toLowerCase().includes(debouncedText.toLowerCase()) ||
+        e.description.toLowerCase().includes(debouncedText.toLowerCase())
+    );
+
+    setData(searchedData);
+  }, [debouncedText]);
 
   return (
     <div>
@@ -83,7 +99,11 @@ export default function TableComponent({
             (3)Stocks
           </div>
         </div>
-        <Input placeholder="Search" />
+        <Input
+          placeholder="Search"
+          value={searchText}
+          onChange={searchHandler}
+        />
       </div>
       <table className="mt-4 w-full">
         <thead className="bg-custom-gray-50 text-custom-gray-60/60 rounded-lg">
