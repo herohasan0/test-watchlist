@@ -32,11 +32,11 @@ export default async function handler(
     fs.rmdirSync(folderPath);
   }
 
+  // Api call for table data
   const handleServiceCallForOverview = async () => {
     const promisesForOverview = symbols.map((symbol) =>
       services.overview({ symbol })
     );
-    console.log("handleServiceCallForOverview");
 
     await Promise.all(promisesForOverview)
       .then((responses) => {
@@ -65,7 +65,6 @@ export default async function handler(
         });
 
         const isAllTrue = isValid.every((e) => e === true);
-        console.log("isAllTrue", isAllTrue);
         if (isAllTrue) {
           setTimeout(() => handleServiceCallForTimeSeries(), 60000);
         }
@@ -75,21 +74,21 @@ export default async function handler(
       });
   };
 
+  // Api call for chart data
   const handleServiceCallForTimeSeries = async () => {
     const promisesForTimeSeries = symbols.map((symbol) =>
       services.timeSeries({ symbol })
     );
-    console.log("handleServiceCallForTimeSeries");
 
     await Promise.all(promisesForTimeSeries).then((response: any) => {
       const isValid = symbols.map((symbol, index) => {
         if (response[index]?.data["Time Series (Daily)"]) {
           const xAxis = Object?.keys(
             response[index]?.data["Time Series (Daily)"]
-          );
+          ).reverse();
           const values = Object?.values(
             response[index]?.data["Time Series (Daily)"]
-          );
+          ).reverse();
           const open = values.map((e: any) => e["1. open"]);
           const high = values.map((e: any) => e["2. high"]);
           const low = values.map((e: any) => e["3. low"]);
@@ -118,8 +117,6 @@ export default async function handler(
   };
 
   const createDataFile = () => {
-    console.log("create data file");
-
     const jsonData = JSON.stringify(companyData, null, 2);
 
     try {
@@ -139,8 +136,6 @@ export default async function handler(
 
   const sendFileContent = () => {
     fs.readdir(folderPath, (err, files) => {
-      console.log("readdir here!!");
-
       if (err) {
         console.error("Error reading folder:", err);
         res.status(500).end("Internal Server Error");
