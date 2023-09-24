@@ -1,5 +1,6 @@
 import TableComponent from "@/components/TableComponent";
 import { services } from "@/services/api";
+import axios from "axios";
 import { Inter } from "next/font/google";
 import React from "react";
 import { useQuery } from "react-query";
@@ -14,7 +15,7 @@ export default function Home() {
   }: { isLoading: boolean; error: any; data: any } = useQuery(
     "overview",
     () => {
-      services.overview().then((res) => {
+      axios.get("/api/companies").then((res) => {
         console.log("res", res);
       });
     }
