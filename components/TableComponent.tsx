@@ -96,7 +96,7 @@ export default function TableComponent({
           </svg>
           <span className="text-xl font-bold">Watchlist</span>
           <div className="font-bold bg-[#ebedef]/40 px-2 py-1 rounded-md">
-            (3)Stocks
+            ({data.length})Stocks
           </div>
         </div>
         <Input
