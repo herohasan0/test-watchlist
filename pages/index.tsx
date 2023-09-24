@@ -1,11 +1,14 @@
 import TableComponent from "@/components/TableComponent";
 import { services } from "@/services/api";
 import axios from "axios";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import React from "react";
 import { useQuery } from "react-query";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+});
 
 export default function Home() {
   const {
@@ -27,7 +30,7 @@ export default function Home() {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between p-20 ${roboto.className}`}
     >
       <TableComponent tableData={data} />
     </main>

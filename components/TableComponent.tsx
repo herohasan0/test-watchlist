@@ -9,6 +9,7 @@ import {
 
 import React, { useState, useReducer } from "react";
 import { TableData, TableRow } from "@/types/data";
+import TableCell from "./TableCell";
 
 const columnHelper = createColumnHelper<TableRow>();
 
@@ -39,19 +40,25 @@ const columnHelper = createColumnHelper<TableRow>();
 const columns: any = [
   columnHelper.accessor("name", {
     header: "Name",
+    cell: (props) => <TableCell value={props.getValue()} />,
   }),
   columnHelper.accessor("description", {
     header: "Description",
-    cell: (props) => <span>{`${props.getValue()?.substring(0, 10)}...`}</span>,
+    cell: (props) => (
+      <TableCell value={`${props.getValue()?.substring(0, 15)}..`} />
+    ),
   }),
   columnHelper.accessor("address", {
     header: "Address",
+    cell: (props) => <TableCell value={props.getValue()} />,
   }),
   columnHelper.accessor("dividendYield", {
     header: "Dividend Yield",
+    cell: (props) => <TableCell value={props.getValue()} />,
   }),
   columnHelper.accessor("marketCapitalization", {
     header: "Market Capitalization",
+    cell: (props) => <TableCell value={props.getValue()} />,
   }),
 ];
 
@@ -71,7 +78,7 @@ export default function TableComponent({
   });
 
   return (
-    <div className="shadow-lg bg-white rounded-md p-4">
+    <div className="shadow-lg bg-white rounded-2xl p-8">
       <div className="flex items-center space-x-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -93,13 +100,16 @@ export default function TableComponent({
           />
         </svg>
         <span className="text-xl font-bold">Watchlist</span>
+        <div className="font-bold bg-[#ebedef]/40 px-2 py-1 rounded-md">
+          (3)Stocks
+        </div>
       </div>
-      <table className="">
-        <thead>
+      <table className="mt-4">
+        <thead className="bg-custom-gray-50 text-custom-gray-60/60 rounded-lg">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+                <th key={header.id} className="py-2 px-4 font-medium text-left">
                   {header.isPlaceholder
                     ? null
                     : flexRender(
