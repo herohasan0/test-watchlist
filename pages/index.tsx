@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center space-y-10 mt-4 px-8 max-w-[1500px] mx-auto ${roboto.className}`}
+      className={`flex flex-col items-center space-y-4 mt-4 px-8 max-w-[1300px] mx-auto ${roboto.className}`}
     >
       <Container>
         <TableComponent tableData={data} />

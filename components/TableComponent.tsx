@@ -4,11 +4,10 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import React, { ChangeEvent, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TableData, TableRow } from "@/types/data";
 import TableCell from "./TableCell";
-import Input from "./Input";
-import useDebounce from "@/utils/hooks";
+import Search from "./Search";
 
 const columnHelper = createColumnHelper<TableRow>();
 
@@ -53,24 +52,6 @@ export default function TableComponent({
     getCoreRowModel: getCoreRowModel(),
   });
 
-  const [searchText, setSearchText] = useState("");
-
-  const debouncedText = useDebounce<string>(searchText, 500);
-
-  const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
-  };
-
-  useEffect(() => {
-    const searchedData = [...datas].filter(
-      (e) =>
-        e.name.toLowerCase().includes(debouncedText.toLowerCase()) ||
-        e.description.toLowerCase().includes(debouncedText.toLowerCase())
-    );
-
-    setData(searchedData);
-  }, [debouncedText]);
-
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -99,11 +80,7 @@ export default function TableComponent({
             ({data.length})Stocks
           </div>
         </div>
-        <Input
-          placeholder="Search"
-          value={searchText}
-          onChange={searchHandler}
-        />
+        <Search datas={datas} setData={setData} />
       </div>
       <table className="mt-4 w-full">
         <thead className="bg-custom-gray-50 text-custom-gray-60/60 rounded-lg">
