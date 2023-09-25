@@ -5,9 +5,10 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import React, { useState } from "react";
-import { DataRow, TableData, TableRow } from "@/types/data";
+import { TableData, TableRow } from "@/types/data";
 import TableCell from "./TableCell";
 import Search from "./Search";
+import HoverContext from "./HoverContext";
 
 const columnHelper = createColumnHelper<TableRow>();
 
@@ -19,7 +20,9 @@ const columns = [
   columnHelper.accessor("description", {
     header: "Description",
     cell: (props) => (
-      <TableCell value={`${props.getValue()?.substring(0, 15)}..`} />
+      <HoverContext hoverText={props.getValue()}>
+        <TableCell value={`${props.getValue()?.substring(0, 15)}..`} />
+      </HoverContext>
     ),
   }),
   columnHelper.accessor("address", {
