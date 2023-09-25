@@ -5,6 +5,7 @@ import axios from "axios";
 import { Roboto } from "next/font/google";
 import React from "react";
 import { useQuery } from "react-query";
+import { LoadingComponent } from "@/components/LoadingComponent";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -25,7 +26,12 @@ export default function Home() {
     }
   );
 
-  if (isLoading) return "Loading...";
+  if (isLoading)
+    return (
+      <div className="grid h-screen place-items-center bg-custom-gray-50">
+        <LoadingComponent />
+      </div>
+    );
 
   if (error) return "An error has occurred: " + error.message;
 

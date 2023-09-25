@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.spinner {
+  transform-origin: center;
+  animation: spinner_animation 2s linear infinite;
+}
+
+@keyframes spinner_animation {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner circle {
+  stroke-linecap: round;
+  animation: spinner_circle_animation 1.5s ease-in-out infinite;
+}
+
+@keyframes spinner_circle_animation {
+  0% {
+    stroke-dasharray: 0 150;
+    stroke-dashoffset: 0;
+  }
+  47.5% {
+    stroke-dasharray: 42 150;
+    stroke-dashoffset: -16;
+  }
+  95%,
+  100% {
+    stroke-dasharray: 42 150;
+    stroke-dashoffset: -59;
+  }
+}
