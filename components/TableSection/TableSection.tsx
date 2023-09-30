@@ -1,23 +1,22 @@
-import TableCell from "../TableCell";
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import React, { useState } from "react";
+import { TableData, TableRow } from "@/types/data";
+import TableCell from "./TableCell";
+import HoverContext from "../HoverContext";
+import TableTopSection from "./TableTopSection";
+import Table from "./Table";
 
 const columnHelper = createColumnHelper<TableRow>();
-import { TableData, TableRow } from "@/types/data";
-import HoverContext from "../HoverContext";
 
-// // Cell: ({ cell }: { cell: { value: TableCell } }) => <CustomComponent data={cell.value} />,
-
-const deneme = <div>sadfasf</div>;
-
-const Columns = [
+const columns = [
   columnHelper.accessor("name", {
     header: "Name",
-    cell: (props: any) => <TableCell value={props.getValue()} />,
+    cell: (props) => <TableCell value={props.getValue()} />,
   }),
   columnHelper.accessor("description", {
     header: "Description",
@@ -41,4 +40,24 @@ const Columns = [
   }),
 ];
 
-export default Columns;
+export default function TableSection({ tableData }: { tableData: TableData }) {
+  const values = Object.values(tableData);
+  const datas = values.map((e: any) => {
+    return e.tableData;
+  });
+
+  const [data, setData] = useState(() => [...datas]);
+
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
+
+  return (
+    <>
+      <TableTopSection data={data} setData={setData} datas={datas} />
+      <Table flexRender={flexRender} table={table} />
+    </>
+  );
+}

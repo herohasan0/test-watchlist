@@ -1,11 +1,11 @@
 import Container from "@/components/Container";
-import Chart from "@/components/Chart";
-import TableComponent from "@/components/TableComponent";
 import axios from "axios";
 import { Roboto } from "next/font/google";
 import React from "react";
 import { useQuery } from "react-query";
 import { LoadingComponent } from "@/components/LoadingComponent";
+import ChartSection from "@/components/ChartSection";
+import TableSection from "@/components/TableSection/TableSection";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -40,10 +40,10 @@ export default function Home() {
       className={`flex flex-col items-center space-y-4 mt-4 px-8 max-w-[1300px] mx-auto ${roboto.className}`}
     >
       <Container>
-        <TableComponent tableData={data} />
+        <TableSection tableData={data} />
       </Container>
       <Container>
-        <Chart chartData={data} />
+        <ChartSection data={data} />
       </Container>
     </main>
   );
