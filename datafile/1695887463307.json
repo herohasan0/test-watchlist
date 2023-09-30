@@ -5,13 +5,10 @@
       "description": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software, and online services. Apple is the world's largest technology company by revenue (totalling $274.5 billion in 2020) and, since January 2021, the world's most valuable company. As of 2021, Apple is the world's fourth-largest PC vendor by unit sales, and fourth-largest smartphone manufacturer. It is one of the Big Five American information technology companies, along with Amazon, Google, Microsoft, and Facebook.",
       "address": "ONE INFINITE LOOP, CUPERTINO, CA, US",
       "dividendYield": "0.0055",
-      "marketCapitalization": "2732701516000"
+      "marketCapitalization": "2688457114000"
     },
     "chartData": {
       "xAxis": [
-        "2023-05-02",
-        "2023-05-03",
-        "2023-05-04",
         "2023-05-05",
         "2023-05-08",
         "2023-05-09",
@@ -108,12 +105,12 @@
         "2023-09-19",
         "2023-09-20",
         "2023-09-21",
-        "2023-09-22"
+        "2023-09-22",
+        "2023-09-25",
+        "2023-09-26",
+        "2023-09-27"
       ],
       "open": [
-        "170.0900",
-        "169.5000",
-        "164.8900",
         "170.9750",
         "172.4800",
         "173.0500",
@@ -210,12 +207,12 @@
         "177.5200",
         "179.2600",
         "174.5500",
-        "174.6700"
+        "174.6700",
+        "174.2000",
+        "174.8200",
+        "172.6200"
       ],
       "high": [
-        "170.3500",
-        "170.9200",
-        "167.0400",
         "174.3000",
         "173.8500",
         "173.5400",
@@ -312,12 +309,12 @@
         "179.6300",
         "179.6950",
         "176.3000",
-        "177.0790"
+        "177.0790",
+        "176.9700",
+        "175.2000",
+        "173.0400"
       ],
       "low": [
-        "167.5400",
-        "167.1600",
-        "164.3100",
         "170.7600",
         "172.1100",
         "171.6000",
@@ -414,12 +411,12 @@
         "177.1300",
         "175.4000",
         "173.8600",
-        "174.0500"
+        "174.0500",
+        "174.1500",
+        "171.6600",
+        "169.0500"
       ],
       "close": [
-        "168.5400",
-        "167.4500",
-        "165.7900",
         "173.5700",
         "173.5000",
         "171.7700",
@@ -516,7 +513,10 @@
         "179.0700",
         "175.4900",
         "173.9300",
-        "174.7900"
+        "174.7900",
+        "176.0800",
+        "171.9600",
+        "170.4300"
       ]
     }
   },
@@ -525,14 +525,11 @@
       "name": "Microsoft Corporation",
       "description": "Microsoft Corporation is an American multinational technology company which produces computer software, consumer electronics, personal computers, and related services. Its best known software products are the Microsoft Windows line of operating systems, the Microsoft Office suite, and the Internet Explorer and Edge web browsers. Its flagship hardware products are the Xbox video game consoles and the Microsoft Surface lineup of touchscreen personal computers. Microsoft ranked No. 21 in the 2020 Fortune 500 rankings of the largest United States corporations by total revenue; it was the world's largest software maker by revenue as of 2016. It is considered one of the Big Five companies in the U.S. information technology industry, along with Google, Apple, Amazon, and Facebook.",
       "address": "ONE MICROSOFT WAY, REDMOND, WA, US",
-      "dividendYield": "0.0094",
-      "marketCapitalization": "2355308265000"
+      "dividendYield": "0.0096",
+      "marketCapitalization": "2319125316000"
     },
     "chartData": {
       "xAxis": [
-        "2023-05-02",
-        "2023-05-03",
-        "2023-05-04",
         "2023-05-05",
         "2023-05-08",
         "2023-05-09",
@@ -629,12 +626,12 @@
         "2023-09-19",
         "2023-09-20",
         "2023-09-21",
-        "2023-09-22"
+        "2023-09-22",
+        "2023-09-25",
+        "2023-09-26",
+        "2023-09-27"
       ],
       "open": [
-        "307.7600",
-        "306.6200",
-        "306.2400",
         "305.7200",
         "310.1300",
         "308.0000",
@@ -731,12 +728,12 @@
         "326.1700",
         "329.5100",
         "319.2600",
-        "321.3200"
+        "321.3200",
+        "316.5900",
+        "315.1300",
+        "312.3000"
       ],
       "high": [
-        "309.1800",
-        "308.6100",
-        "307.7626",
         "311.9700",
         "310.2000",
         "310.0400",
@@ -833,12 +830,12 @@
         "329.3900",
         "329.5900",
         "325.3499",
-        "321.4500"
+        "321.4500",
+        "317.6700",
+        "315.8800",
+        "314.2990"
       ],
       "low": [
-        "303.9100",
-        "304.0900",
-        "303.4000",
         "304.2700",
         "306.0900",
         "306.3100",
@@ -935,12 +932,12 @@
         "324.5100",
         "320.5100",
         "315.0000",
-        "316.1500"
+        "316.1500",
+        "315.0000",
+        "310.0200",
+        "309.6900"
       ],
       "close": [
-        "305.4100",
-        "304.4000",
-        "305.4100",
         "310.6500",
         "308.6500",
         "307.0000",
@@ -1037,7 +1034,10 @@
         "328.6500",
         "320.7700",
         "319.5300",
-        "317.0100"
+        "317.0100",
+        "317.5400",
+        "312.1400",
+        "312.7900"
       ]
     }
   },
@@ -1046,14 +1046,11 @@
       "name": "International Business Machines",
       "description": "International Business Machines Corporation (IBM) is an American multinational technology company headquartered in Armonk, New York, with operations in over 170 countries. The company began in 1911, founded in Endicott, New York, as the Computing-Tabulating-Recording Company (CTR) and was renamed International Business Machines in 1924. IBM is incorporated in New York. IBM produces and sells computer hardware, middleware and software, and provides hosting and consulting services in areas ranging from mainframe computers to nanotechnology. IBM is also a major research organization, holding the record for most annual U.S. patents generated by a business (as of 2020) for 28 consecutive years. Inventions by IBM include the automated teller machine (ATM), the floppy disk, the hard disk drive, the magnetic stripe card, the relational database, the SQL programming language, the UPC barcode, and dynamic random-access memory (DRAM). The IBM mainframe, exemplified by the System/360, was the dominant computing platform during the 1960s and 1970s.",
       "address": "1 NEW ORCHARD ROAD, ARMONK, NY, US",
-      "dividendYield": "0.0451",
-      "marketCapitalization": "133835899000"
+      "dividendYield": "0.0464",
+      "marketCapitalization": "130492506000"
     },
     "chartData": {
       "xAxis": [
-        "2023-05-02",
-        "2023-05-03",
-        "2023-05-04",
         "2023-05-05",
         "2023-05-08",
         "2023-05-09",
@@ -1150,12 +1147,12 @@
         "2023-09-19",
         "2023-09-20",
         "2023-09-21",
-        "2023-09-22"
+        "2023-09-22",
+        "2023-09-25",
+        "2023-09-26",
+        "2023-09-27"
       ],
       "open": [
-        "126.3000",
-        "125.4600",
-        "123.0300",
         "123.1100",
         "123.7600",
         "121.9000",
@@ -1252,12 +1249,12 @@
         "145.0000",
         "148.3600",
         "149.0000",
-        "147.4100"
+        "147.4100",
+        "146.5700",
+        "145.5100",
+        "143.6700"
       ],
       "high": [
-        "126.4500",
-        "125.5700",
-        "123.5200",
         "124.1000",
         "123.9200",
         "121.9700",
@@ -1354,12 +1351,12 @@
         "146.7200",
         "151.9299",
         "149.2500",
-        "148.1000"
+        "148.1000",
+        "147.4300",
+        "146.1700",
+        "143.8200"
       ],
       "low": [
-        "123.2700",
-        "123.2600",
-        "121.7563",
         "122.8050",
         "122.5500",
         "120.6600",
@@ -1456,12 +1453,12 @@
         "144.6600",
         "148.1300",
         "147.3100",
-        "146.8200"
+        "146.8200",
+        "146.2500",
+        "143.0201",
+        "141.7600"
       ],
       "close": [
-        "125.1600",
-        "123.4500",
-        "122.5700",
         "123.6500",
         "123.4000",
         "121.1700",
@@ -1558,7 +1555,10 @@
         "146.5200",
         "149.8300",
         "147.3800",
-        "146.9100"
+        "146.9100",
+        "146.4800",
+        "143.2400",
+        "143.1700"
       ]
     }
   }
