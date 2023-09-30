@@ -1,5 +1,5 @@
 import React from "react";
-import SelectionSection from "../SelectionSection";
+import SelectionSection from "./SelectionSection";
 
 interface Props {
   optionsSelected: any;

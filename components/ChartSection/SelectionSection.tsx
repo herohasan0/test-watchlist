@@ -1,5 +1,5 @@
 import React from "react";
-import SelectDropdown from "./SelectDropdown";
+import SelectDropdown from "../SelectDropdown";
 
 const Stocks = [
   {
