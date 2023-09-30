@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { getChartData } from "../queries/getChartData";
+import { getChartData } from "@/repo/main";
 
 export const useChartData = () => {
   return useQuery(getChartData());
