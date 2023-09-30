@@ -1,9 +1,6 @@
 import Container from "@/components/Container";
-import axios from "axios";
 import { Roboto } from "next/font/google";
 import React from "react";
-import { useQuery } from "react-query";
-import { LoadingComponent } from "@/components/LoadingComponent";
 import ChartSection from "@/components/ChartSection";
 import TableSection from "@/components/TableSection/TableSection";
 
@@ -13,37 +10,15 @@ const roboto = Roboto({
 });
 
 export default function Home() {
-  const {
-    isLoading,
-    error,
-    data,
-  }: { isLoading: boolean; error: any; data: any } = useQuery(
-    "overview",
-    () => {
-      return axios.get("/api/companies").then((res) => {
-        return res.data;
-      });
-    }
-  );
-
-  if (isLoading)
-    return (
-      <div className="grid h-screen place-items-center bg-custom-gray-50">
-        <LoadingComponent />
-      </div>
-    );
-
-  if (error) return "An error has occurred: " + error.message;
-
   return (
     <main
       className={`flex flex-col items-center space-y-4 mt-4 px-8 max-w-[1300px] mx-auto ${roboto.className}`}
     >
       <Container>
-        <TableSection tableData={data} />
+        <TableSection />
       </Container>
       <Container>
-        <ChartSection data={data} />
+        <ChartSection />
       </Container>
     </main>
   );

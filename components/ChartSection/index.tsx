@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ChartTopSection from "./ChartTopSection";
 import Chart from "./Chart";
+import { useChartData } from "@/repo/main";
+import { LoadingComponent } from "../LoadingComponent";
 
 interface Props {
   data: any;
@@ -11,7 +13,7 @@ type DropdownOption = {
   value: string;
 };
 
-const ChartSection = ({ data }: Props) => {
+const ChartSection = () => {
   const [optionsSelected, setOptionsSelected] = useState({
     label: "Open",
     value: "open",
@@ -31,6 +33,18 @@ const ChartSection = ({ data }: Props) => {
       value: "IBM",
     },
   ]);
+
+  const { data, isLoading, isError } = useChartData();
+
+  if (isLoading) {
+    return (
+      <div className="grid h-screen place-items-center bg-custom-gray-50">
+        <LoadingComponent />
+      </div>
+    );
+  }
+
+  if (isError) return "An error has occurred: ";
 
   const xAxis = data.AAPL.chartData.xAxis;
 

@@ -1,13 +1,11 @@
 import { useQuery, UseQueryOptions } from "react-query";
 import axios from "axios";
-import { TableData, TableRow } from "@/types/data";
 
-interface QueryOptions extends UseQueryOptions<TableData, Error> {}
+interface QueryOptions extends UseQueryOptions<any, Error> {}
 
-const fetchData = async (): Promise<TableRow[]> => {
-  const response = await axios.get<TableData>("/api/companies");
-  const tableData = Object.values(response.data).map((e: any) => e.tableData);
-  return tableData;
+const fetchData = async (): Promise<any> => {
+  const response = await axios.get<any>("/api/companies");
+  return response.data;
 };
 
 export const useChartData = (options?: any) => {

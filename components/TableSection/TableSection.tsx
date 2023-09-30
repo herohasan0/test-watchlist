@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import TableTopSection from "./TableTopSection";
 import Table from "./Table";
 // import useChartData from "@/repo/main/hooks/useChartData";
-import { useChartData } from "@/repo/main";
+import { useTableData } from "@/repo/main";
 import { LoadingComponent } from "../LoadingComponent";
 
 export default function TableSection() {
-  const { data: tableData, isLoading, isError } = useChartData();
+  const { data: tableData, isLoading, isError } = useTableData();
 
   // const values = Object.values(tableData);
   // const datas = values.map((e: any) => {
