@@ -3,8 +3,8 @@ import Search from "../Search";
 
 interface TableTopSectionProps {
   data: any;
-  setData: React.Dispatch<React.SetStateAction<any>>;
-  datas: any[];
+  setData?: React.Dispatch<React.SetStateAction<any>>;
+  datas?: any[];
 }
 
 const TableTopSection: FC<TableTopSectionProps> = ({

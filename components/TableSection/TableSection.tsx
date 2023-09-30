@@ -1,63 +1,34 @@
-import {
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
 import React, { useState } from "react";
-import { TableData, TableRow } from "@/types/data";
-import TableCell from "./TableCell";
-import HoverContext from "../HoverContext";
 import TableTopSection from "./TableTopSection";
 import Table from "./Table";
+// import useChartData from "@/repo/main/hooks/useChartData";
+import { useChartData } from "@/repo/main";
+import { LoadingComponent } from "../LoadingComponent";
 
-const columnHelper = createColumnHelper<TableRow>();
+export default function TableSection() {
+  const { data: tableData, isLoading, isError } = useChartData();
 
-const columns = [
-  columnHelper.accessor("name", {
-    header: "Name",
-    cell: (props) => <TableCell value={props.getValue()} />,
-  }),
-  columnHelper.accessor("description", {
-    header: "Description",
-    cell: (props) => (
-      <HoverContext hoverText={props.getValue()}>
-        <TableCell value={`${props.getValue()?.substring(0, 15)}..`} />
-      </HoverContext>
-    ),
-  }),
-  columnHelper.accessor("address", {
-    header: "Address",
-    cell: (props) => <TableCell value={props.getValue()} />,
-  }),
-  columnHelper.accessor("dividendYield", {
-    header: "Dividend Yield",
-    cell: (props) => <TableCell value={props.getValue()} />,
-  }),
-  columnHelper.accessor("marketCapitalization", {
-    header: "Market Capitalization",
-    cell: (props) => <TableCell value={props.getValue()} />,
-  }),
-];
+  // const values = Object.values(tableData);
+  // const datas = values.map((e: any) => {
+  //   return e.tableData;
+  // });
 
-export default function TableSection({ tableData }: { tableData: TableData }) {
-  const values = Object.values(tableData);
-  const datas = values.map((e: any) => {
-    return e.tableData;
-  });
+  // const [data, setData] = useState(() => [...datas]);
 
-  const [data, setData] = useState(() => [...datas]);
+  if (isLoading) {
+    return (
+      <div className="grid h-screen place-items-center bg-custom-gray-50">
+        <LoadingComponent />
+      </div>
+    );
+  }
 
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
+  if (isError) return "An error has occurred: ";
 
   return (
     <>
-      <TableTopSection data={data} setData={setData} datas={datas} />
-      <Table flexRender={flexRender} table={table} />
+      {/* <TableTopSection data={data} setData={setData} datas={datas} /> */}
+      <Table data={tableData} />
     </>
   );
 }
