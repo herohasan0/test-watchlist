@@ -1,15 +1,21 @@
-import axios from "axios";
-import { TableData, TableRow } from "@/repo/main/typings/table";
+import { TableRow } from "@/repo/main/typings/table";
 import { TABLE_DATA } from "../utils/DummyData";
+import { services } from "@/services/api";
 
 export const getTableData = (symbols: string[]) => {
   return {
     queryKey: ["tableData", symbols],
     queryFn: async () => {
-      console.log("aha");
-      const responses = await Promise.all(
+      const responses: any = await Promise.all(
         symbols.map((symbol: string) => {
-          return TABLE_DATA[symbol as keyof typeof TABLE_DATA];
+          return services.overview({ symbol }).then((data) => {
+            if (data.data.Symbol) {
+              return data.data;
+            }
+
+            // Make the Table visible with old data if API reaches its limit
+            return TABLE_DATA[symbol as keyof typeof TABLE_DATA];
+          });
         })
       );
 
@@ -22,7 +28,6 @@ export const getTableData = (symbols: string[]) => {
       }));
       return result;
     },
-    // queryFn: () => services.overview({ symbol }).then((data) => data.data),
     cacheTime: 5 * 60 * 1000,
   };
 };

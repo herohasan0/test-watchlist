@@ -10,11 +10,9 @@ export const api = axios.create({
 
 export const services = {
   overview: async ({ symbol }: { symbol: string }) =>
-    api
-      .get(
-        `query?function=OVERVIEW&apikey=${process.env.NEXT_PUBLIC_TOKEN}&symbol=${symbol}`
-      )
-      .then((res) => res),
+    api.get(
+      `query?function=OVERVIEW&apikey=${process.env.NEXT_PUBLIC_TOKEN}&symbol=${symbol}`
+    ),
 
   timeSeries: async ({ symbol }: { symbol: string }) =>
     api.get(

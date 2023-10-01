@@ -1,5 +1,4 @@
 import { services } from "@/services/api";
-import axios from "axios";
 import { extractChartData } from "../extractors";
 import { CHART_DATA } from "../utils/DummyData";
 
@@ -9,7 +8,14 @@ export const getChartData = (symbols: string[]) => {
     queryFn: async () => {
       const responses = await Promise.all(
         symbols.map((symbol: string) => {
-          return CHART_DATA[symbol as keyof typeof CHART_DATA];
+          return services.timeSeries({ symbol }).then((data) => {
+            if (data.data["Time Series (Daily)"]) {
+              return data.data;
+            }
+
+            // Make the Chart visible with old data if API reaches its limit
+            return CHART_DATA[symbol as keyof typeof CHART_DATA];
+          });
         })
       );
 
@@ -22,7 +28,6 @@ export const getChartData = (symbols: string[]) => {
       });
       return result;
     },
-    // queryFn: () => services.timeSeries({ symbol }).then((data) => data.data),
     cacheTime: 5 * 60 * 1000,
   };
 };
