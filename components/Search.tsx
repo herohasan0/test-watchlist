@@ -2,7 +2,12 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import Input from "./Input";
 import useDebounce from "@/repo/main/utils/useDebounce";
 
-export default function Search({ datas, setData }: any) {
+interface SearchProps {
+  setData: React.Dispatch<React.SetStateAction<any>>;
+  tableData: any[];
+}
+
+export default function Search({ tableData, setData }: SearchProps) {
   const [searchText, setSearchText] = useState("");
 
   const debouncedText = useDebounce<string>(searchText, 500);
@@ -12,7 +17,7 @@ export default function Search({ datas, setData }: any) {
   };
 
   useEffect(() => {
-    const searchedData = [...datas].filter(
+    const searchedData = [...tableData].filter(
       (e) =>
         e.name.toLowerCase().includes(debouncedText.toLowerCase()) ||
         e.description.toLowerCase().includes(debouncedText.toLowerCase())

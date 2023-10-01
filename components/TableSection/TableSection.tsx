@@ -22,7 +22,7 @@ export default function TableSection() {
 
   return (
     <>
-      <TableTopSection data={data} setData={setData} datas={tableData} />
+      <TableTopSection data={data} setData={setData} tableData={tableData} />
       <Table data={data} />
     </>
   );
