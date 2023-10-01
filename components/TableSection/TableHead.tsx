@@ -1,5 +1,5 @@
-import { TableHeadProps } from "@/repo/main";
 import React, { FC } from "react";
+import { TableHeadProps } from "@/repo/main";
 
 const TableHead: FC<TableHeadProps> = ({ table, flexRender }) => {
   return (

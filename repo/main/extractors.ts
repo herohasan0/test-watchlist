@@ -17,3 +17,14 @@ export const extractChartData = (rawChartData: any): ChartRow => {
     close,
   };
 };
+
+export const extractTableData = (responses: any, symbols: string[]) => {
+  const result = symbols.map((_: string, index: number) => ({
+    name: responses[index].Name,
+    description: responses[index].Description,
+    address: responses[index].Address,
+    dividendYield: responses[index].DividendYield,
+    marketCapitalization: responses[index].MarketCapitalization,
+  }));
+  return result;
+};

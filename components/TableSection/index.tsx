@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import TableTopSection from "./TableTopSection";
 import Table from "./Table";
-// import useChartData from "@/repo/main/hooks/useChartData";
+import React, { useState } from "react";
 import { useTableData } from "@/repo/main";
+import TableTopSection from "./TableTopSection";
 import LoadingComponent from "../LoadingComponent";
 
 const TableSection = () => {

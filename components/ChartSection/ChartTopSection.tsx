@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import SelectionSection from "./SelectionSection";
 import LeftSide from "./LeftSide";
+import SelectionSection from "./SelectionSection";
 import { ChartTopSectionProps } from "@/repo/main";
 
 const ChartTopSection: FC<ChartTopSectionProps> = ({

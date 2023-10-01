@@ -2,6 +2,7 @@ import { TableRow } from "@/repo/main";
 import { TABLE_DATA } from "../utils/DummyData";
 import { services } from "@/services/api";
 import { queryKeyFor } from "@/repo/main";
+import { extractTableData } from "../extractors";
 
 export const getTableData = (symbols: string[]) => {
   return {
@@ -11,7 +12,7 @@ export const getTableData = (symbols: string[]) => {
       params: symbols,
     }),
     queryFn: async () => {
-      const responses: any = await Promise.all(
+      const responses = await Promise.all(
         symbols.map((symbol: string) => {
           // return services.overview({ symbol }).then((data) => {
           //   if (data.data.Symbol) {
@@ -25,13 +26,7 @@ export const getTableData = (symbols: string[]) => {
         })
       );
 
-      const result: TableRow[] = symbols.map((symbol, index) => ({
-        name: responses[index].Name,
-        description: responses[index].Description,
-        address: responses[index].Address,
-        dividendYield: responses[index].DividendYield,
-        marketCapitalization: responses[index].MarketCapitalization,
-      }));
+      const result: TableRow[] = extractTableData(responses, symbols);
       return result;
     },
     enabled: Boolean(symbols.length > 0),

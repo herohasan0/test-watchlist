@@ -1,5 +1,5 @@
-import { InputProps } from "@/repo/main";
 import React, { FC } from "react";
+import { InputProps } from "@/repo/main";
 
 const Input: FC<InputProps> = ({ value, onChange, placeholder }) => {
   return (

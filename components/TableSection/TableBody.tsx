@@ -1,5 +1,5 @@
-import { TableBodyProps } from "@/repo/main";
 import React, { FC } from "react";
+import { TableBodyProps } from "@/repo/main";
 
 const TableBody: FC<TableBodyProps> = ({ table, flexRender }) => {
   return (
