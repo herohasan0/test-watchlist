@@ -12,7 +12,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const symbols = ["AAPL", "MSFT", "IBM"];
+  const symbols = ["AAPL", "IBM"];
   const companyData: any = {};
 
   const rootFolder = process.cwd();

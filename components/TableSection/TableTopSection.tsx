@@ -35,7 +35,7 @@ const TableTopSection: FC<TableTopSectionProps> = ({
       </svg>
       <span className="text-xl font-bold">Watchlist</span>
       <div className="font-bold bg-[#ebedef]/40 px-2 py-1 rounded-md">
-        ({data.length})Stocks
+        ({data?.length})Stocks
       </div>
     </div>
     <Search datas={datas} setData={setData} />

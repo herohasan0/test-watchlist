@@ -8,12 +8,7 @@ import { LoadingComponent } from "../LoadingComponent";
 export default function TableSection() {
   const { data: tableData, isLoading, isError } = useTableData();
 
-  // const values = Object.values(tableData);
-  // const datas = values.map((e: any) => {
-  //   return e.tableData;
-  // });
-
-  // const [data, setData] = useState(() => [...datas]);
+  const [data, setData] = useState(tableData);
 
   if (isLoading) {
     return (
@@ -27,8 +22,8 @@ export default function TableSection() {
 
   return (
     <>
-      {/* <TableTopSection data={data} setData={setData} datas={datas} /> */}
-      <Table data={tableData} />
+      <TableTopSection data={data} setData={setData} datas={tableData} />
+      <Table data={data} />
     </>
   );
 }
