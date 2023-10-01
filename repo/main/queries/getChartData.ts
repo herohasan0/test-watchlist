@@ -13,15 +13,14 @@ export const getChartData = (symbols: string[]) => {
     queryFn: async () => {
       const responses = await Promise.all(
         symbols.map((symbol: string) => {
-          // return services.timeSeries({ symbol }).then((data) => {
-          //   if (data.data["Time Series (Daily)"]) {
-          //     return data.data;
-          //   }
+          return services.timeSeries({ symbol }).then((data) => {
+            if (data.data["Time Series (Daily)"]) {
+              return data.data;
+            }
 
-          //   // Make the Chart visible with old data if API reaches its limit
-          //   return CHART_DATA[symbol as keyof typeof CHART_DATA];
-          // });
-          return CHART_DATA[symbol as keyof typeof CHART_DATA];
+            // Make the Chart visible with old data if API reaches its limit
+            return CHART_DATA[symbol as keyof typeof CHART_DATA];
+          });
         })
       );
 
