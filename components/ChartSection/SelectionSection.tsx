@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import SelectDropdown from "../SelectDropdown";
+import { MultiValue, SingleValue } from "react-select";
 
 const Stocks = [
   {
@@ -31,16 +32,20 @@ const Options = [
   },
 ];
 
-interface DropdownOption {
+interface SelectDropdownOption {
   label: string;
   value: string | number;
 }
 
 interface SelectionSectionProps {
-  stocksSelected: DropdownOption;
-  optionsSelected: DropdownOption;
-  stocksSelectionHandler: () => void;
-  optionsSelectionHandler: () => void;
+  stocksSelected: SelectDropdownOption[];
+  optionsSelected: SelectDropdownOption;
+  // stocksSelectionHandler: (newValue: MultiValue<SelectDropdownOption>) => void;
+  stocksSelectionHandler: any;
+  optionsSelectionHandler: any;
+  // optionsSelectionHandler: (
+  //   newValue: SingleValue<SelectDropdownOption>
+  // ) => void;
 }
 
 const SelectionSection: FC<SelectionSectionProps> = ({

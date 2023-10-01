@@ -1,25 +1,25 @@
-type TableRow = {
+export interface TableRow {
   name: string;
   description: string;
   address: string;
   dividendYield: string;
   marketCapitalization: string;
-};
+}
 
-type ChartRow = {
+export interface ChartRow {
   xAxis: string[];
   open: string[];
   low: string[];
   high: string[];
   close: string[];
-};
+}
 
-type DataRow = {
+export interface DataRow {
   tableData: TableRow;
   chartData: ChartRow;
-};
+}
 
-type TableData = {
+export interface TableData {
   AAPL: {
     tableData: TableRow;
   };
@@ -29,6 +29,4 @@ type TableData = {
   IBM: {
     tableData: TableRow;
   };
-};
-
-export { TableRow, TableData, DataRow, ChartRow };
+}

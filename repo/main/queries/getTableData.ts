@@ -1,4 +1,4 @@
-import { TableRow } from "@/repo/main/typings/table";
+import { TableRow } from "@/repo/main";
 import { TABLE_DATA } from "../utils/DummyData";
 import { services } from "@/services/api";
 import { queryKeyFor } from "@/repo/main";

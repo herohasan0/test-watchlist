@@ -8,15 +8,23 @@ interface SelectDropdownOption {
 
 interface SelectDropdownProps {
   options: SelectDropdownOption[];
-  defaultSelect: SelectDropdownOption;
+  defaultSelect: SelectDropdownOption | SelectDropdownOption[];
   handleChange:
     | ((
         newValue:
           | MultiValue<SelectDropdownOption>
           | SingleValue<SelectDropdownOption>,
-        actionMeta: ActionMeta<SelectDropdownOption>
+        actionMeta?: ActionMeta<SelectDropdownOption>
       ) => void)
     | undefined;
+  //   handleChange:
+  // | ((
+  //         newValue:
+  //           | MultiValue<SelectDropdownOption>
+  //           | SingleValue<SelectDropdownOption>,
+  //         actionMeta: ActionMeta<SelectDropdownOption>
+  //       ) => void)
+  //     | undefined;
   isMulti?: boolean;
   placeholder?: string;
 }

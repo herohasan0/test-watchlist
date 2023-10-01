@@ -1,4 +1,4 @@
-import { ChartRow } from "./typings/chart";
+import { ChartRow } from "@/repo/main";
 
 export const extractChartData = (rawChartData: any): ChartRow => {
   const xAxis = Object?.keys(rawChartData["Time Series (Daily)"]).reverse();

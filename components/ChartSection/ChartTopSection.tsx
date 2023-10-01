@@ -1,18 +1,7 @@
 import React, { FC } from "react";
 import SelectionSection from "./SelectionSection";
 import LeftSide from "./LeftSide";
-
-interface Option {
-  label: string;
-  value: string | number;
-}
-
-interface ChartTopSectionProps {
-  optionsSelected: Option;
-  stocksSelected: Option;
-  stocksSelectionHandler: () => void;
-  optionsSelectionHandler: () => void;
-}
+import { ChartTopSectionProps } from "@/repo/main";
 
 const ChartTopSection: FC<ChartTopSectionProps> = ({
   optionsSelected,

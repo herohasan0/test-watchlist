@@ -1,25 +1,16 @@
 import React, { useState } from "react";
 import ChartTopSection from "./ChartTopSection";
 import Chart from "./Chart";
-import { useChartData } from "@/repo/main";
+import { SelectDropdownOption, useChartData } from "@/repo/main";
 import LoadingComponent from "../LoadingComponent";
 
-interface Props {
-  data: any;
-}
-
-type DropdownOption = {
-  label: string;
-  value: string;
-};
-
 const ChartSection = () => {
-  const [optionsSelected, setOptionsSelected] = useState({
+  const [optionsSelected, setOptionsSelected] = useState<SelectDropdownOption>({
     label: "Open",
     value: "open",
   });
 
-  const [stocksSelected, setStocksSelected] = useState([
+  const [stocksSelected, setStocksSelected] = useState<SelectDropdownOption[]>([
     {
       label: "AAPL",
       value: "AAPL",
@@ -56,11 +47,11 @@ const ChartSection = () => {
     };
   });
 
-  const stocksSelectionHandler = (e: DropdownOption[]) => {
+  const stocksSelectionHandler = (e: SelectDropdownOption[]) => {
     setStocksSelected(e);
   };
 
-  const optionsSelectionHandler = (e: DropdownOption) => {
+  const optionsSelectionHandler = (e: SelectDropdownOption) => {
     setOptionsSelected(e);
   };
 

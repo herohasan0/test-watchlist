@@ -8,7 +8,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { TableRow } from "@/repo/main/typings/table";
+import { TableRow } from "@/repo/main";
 import TableCell from "./TableCell";
 import HoverContext from "../HoverContext";
 
