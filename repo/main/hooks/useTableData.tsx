@@ -1,8 +1,7 @@
 import { useQuery } from "react-query";
 import { getTableData } from "@/repo/main";
-import useDebounce from "../utils/useDebounce";
-
-const symbols = ["AAPL", "IBM"];
+import { useDebounce } from "@/repo/main";
+import { symbols } from "@/repo/main";
 
 export const useTableData = (searchTerm: string) => {
   const { data, isLoading, isError } = useQuery(getTableData(symbols));

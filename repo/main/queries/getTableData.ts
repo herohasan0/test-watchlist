@@ -8,14 +8,15 @@ export const getTableData = (symbols: string[]) => {
     queryFn: async () => {
       const responses: any = await Promise.all(
         symbols.map((symbol: string) => {
-          return services.overview({ symbol }).then((data) => {
-            if (data.data.Symbol) {
-              return data.data;
-            }
+          // return services.overview({ symbol }).then((data) => {
+          //   if (data.data.Symbol) {
+          //     return data.data;
+          //   }
 
-            // Make the Table visible with old data if API reaches its limit
-            return TABLE_DATA[symbol as keyof typeof TABLE_DATA];
-          });
+          //   // Make the Table visible with old data if API reaches its limit
+          //   return TABLE_DATA[symbol as keyof typeof TABLE_DATA];
+          // });
+          return TABLE_DATA[symbol as keyof typeof TABLE_DATA];
         })
       );
 
