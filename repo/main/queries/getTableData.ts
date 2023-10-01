@@ -1,5 +1,5 @@
-import { TableData } from "@/repo/main/typings/table";
 import axios from "axios";
+import { TableData } from "@/repo/main/typings/table";
 
 export const getTableData = () => {
   return {

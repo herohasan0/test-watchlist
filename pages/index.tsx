@@ -1,6 +1,6 @@
-import Container from "@/components/Container";
-import { Roboto } from "next/font/google";
 import React from "react";
+import { Roboto } from "next/font/google";
+import Container from "@/components/Container";
 import ChartSection from "@/components/ChartSection";
 import TableSection from "@/components/TableSection/TableSection";
 
