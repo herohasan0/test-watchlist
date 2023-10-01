@@ -1,4 +1,4 @@
-import { TableData } from "@/types/data";
+import { TableData } from "@/repo/main/typings/table";
 import axios from "axios";
 
 export const getTableData = () => {

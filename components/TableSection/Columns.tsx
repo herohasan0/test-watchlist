@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-table";
 
 const columnHelper = createColumnHelper<TableRow>();
-import { TableData, TableRow } from "@/types/data";
+import { TableData, TableRow } from "@/repo/main/typings/table";
 import HoverContext from "../HoverContext";
 
 // // Cell: ({ cell }: { cell: { value: TableCell } }) => <CustomComponent data={cell.value} />,

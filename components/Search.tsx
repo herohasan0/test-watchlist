@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Input from "./Input";
-import useDebounce from "@/utils/hooks";
+import useDebounce from "@/repo/main/utils/useDebounce";
 
 export default function Search({ datas, setData }: any) {
   const [searchText, setSearchText] = useState("");
