@@ -25,10 +25,6 @@ const ChartSection = () => {
       value: "AAPL",
     },
     {
-      label: "MSFT",
-      value: "MSFT",
-    },
-    {
       label: "IBM",
       value: "IBM",
     },
@@ -46,12 +42,12 @@ const ChartSection = () => {
 
   if (isError) return "An error has occurred: ";
 
-  const xAxis = data.AAPL.chartData.xAxis;
+  const xAxis = data.AAPL.xAxis;
 
   const series: any = stocksSelected.map((symbol) => {
-    const selectedData = data[symbol.value].chartData[
-      optionsSelected.value
-    ].map((a: string) => parseFloat(a));
+    const selectedData = data[symbol.value][optionsSelected.value].map(
+      (a: string) => parseFloat(a)
+    );
 
     return {
       type: "line",

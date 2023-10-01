@@ -7,10 +7,6 @@ const Stocks = [
     value: "AAPL",
   },
   {
-    label: "MSFT",
-    value: "MSFT",
-  },
-  {
     label: "IBM",
     value: "IBM",
   },
