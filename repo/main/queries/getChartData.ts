@@ -1,10 +1,15 @@
 import { services } from "@/services/api";
 import { extractChartData } from "../extractors";
 import { CHART_DATA } from "../utils/DummyData";
+import { queryKeyFor } from "@/repo/main";
 
 export const getChartData = (symbols: string[]) => {
   return {
-    queryKey: ["chartData", symbols],
+    queryKey: queryKeyFor({
+      operation: "read",
+      resourceType: "chart",
+      params: symbols,
+    }),
     queryFn: async () => {
       const responses = await Promise.all(
         symbols.map((symbol: string) => {
@@ -29,6 +34,7 @@ export const getChartData = (symbols: string[]) => {
       });
       return result;
     },
+    enabled: Boolean(symbols.length > 0),
     cacheTime: 5 * 60 * 1000,
   };
 };

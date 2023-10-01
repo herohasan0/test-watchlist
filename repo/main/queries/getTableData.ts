@@ -1,10 +1,15 @@
 import { TableRow } from "@/repo/main/typings/table";
 import { TABLE_DATA } from "../utils/DummyData";
 import { services } from "@/services/api";
+import { queryKeyFor } from "@/repo/main";
 
 export const getTableData = (symbols: string[]) => {
   return {
-    queryKey: ["tableData", symbols],
+    queryKey: queryKeyFor({
+      operation: "read",
+      resourceType: "table",
+      params: symbols,
+    }),
     queryFn: async () => {
       const responses: any = await Promise.all(
         symbols.map((symbol: string) => {
@@ -29,6 +34,7 @@ export const getTableData = (symbols: string[]) => {
       }));
       return result;
     },
+    enabled: Boolean(symbols.length > 0),
     cacheTime: 5 * 60 * 1000,
   };
 };

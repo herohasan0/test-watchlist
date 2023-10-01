@@ -5,3 +5,4 @@ export * from "./queries/getChartData";
 export * from "./utils/DummyData";
 export * from "./utils/useDebounce";
 export * from "./constants";
+export * from "./utils/queryKeyFor";
