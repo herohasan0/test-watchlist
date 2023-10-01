@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface TableRow {
   name: string;
   description: string;
@@ -29,4 +31,32 @@ export interface TableData {
   IBM: {
     tableData: TableRow;
   };
+}
+
+export interface LeftSideProps {
+  dataLength: number;
+}
+
+export interface TableComponentProps {
+  data: TableRow[] | undefined;
+}
+
+export interface TableBodyProps {
+  table: any;
+  flexRender: any;
+}
+
+export interface TableCellProps {
+  value: string | number;
+}
+
+export interface TableHeadProps {
+  table: any;
+  flexRender: any;
+}
+
+export interface TableTopSectionProps {
+  data: any;
+  setSearchText: Dispatch<SetStateAction<any>>;
+  searchText: string;
 }

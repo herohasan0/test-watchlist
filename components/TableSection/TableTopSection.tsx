@@ -1,12 +1,7 @@
 import React, { FC } from "react";
 import Search from "../Search";
 import LeftSide from "./LeftSide";
-
-interface TableTopSectionProps {
-  data: any;
-  setSearchText: React.Dispatch<React.SetStateAction<any>>;
-  searchText: string;
-}
+import { TableTopSectionProps } from "@/repo/main";
 
 const TableTopSection: FC<TableTopSectionProps> = ({
   data,

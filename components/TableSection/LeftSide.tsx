@@ -1,9 +1,6 @@
+import { LeftSideProps } from "@/repo/main";
 import Image from "next/image";
 import React, { FC } from "react";
-
-interface LeftSideProps {
-  dataLength: number;
-}
 
 const LeftSide: FC<LeftSideProps> = ({ dataLength }) => {
   return (

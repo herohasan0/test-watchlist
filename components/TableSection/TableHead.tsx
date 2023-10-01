@@ -1,11 +1,7 @@
+import { TableHeadProps } from "@/repo/main";
 import React, { FC } from "react";
 
-interface Props {
-  table: any;
-  flexRender: any;
-}
-
-const TableHead: FC<Props> = ({ table, flexRender }) => {
+const TableHead: FC<TableHeadProps> = ({ table, flexRender }) => {
   return (
     <thead className="bg-custom-gray-50 text-custom-gray-60/60 rounded-lg">
       {table.getHeaderGroups().map((headerGroup: any) => (

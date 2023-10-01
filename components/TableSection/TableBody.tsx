@@ -1,11 +1,7 @@
+import { TableBodyProps } from "@/repo/main";
 import React, { FC } from "react";
 
-interface Props {
-  table: any;
-  flexRender: any;
-}
-
-const TableBody: FC<Props> = ({ table, flexRender }) => {
+const TableBody: FC<TableBodyProps> = ({ table, flexRender }) => {
   return (
     <tbody>
       {table.getRowModel().rows.map((row: any) => (

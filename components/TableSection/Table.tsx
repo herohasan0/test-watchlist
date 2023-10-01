@@ -7,14 +7,9 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
-import { TableRow } from "@/repo/main";
 import TableCell from "./TableCell";
 import HoverContext from "../HoverContext";
-
-interface Props {
-  data: TableRow[] | undefined;
-}
+import { TableComponentProps, TableRow } from "@/repo/main";
 
 const columnHelper = createColumnHelper<TableRow>();
 
@@ -45,7 +40,7 @@ const columns = [
   }),
 ];
 
-const Table: FC<Props> = ({ data }) => {
+const Table: FC<TableComponentProps> = ({ data }) => {
   const table = useReactTable({
     data: data ?? [],
     columns,
