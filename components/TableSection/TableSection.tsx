@@ -6,9 +6,8 @@ import { useTableData } from "@/repo/main";
 import LoadingComponent from "../LoadingComponent";
 
 const TableSection = () => {
-  const { data: tableData, isLoading, isError } = useTableData();
-
-  const [data, setData] = useState(tableData);
+  const [searchText, setSearchText] = useState("");
+  const { data: tableData, isLoading, isError } = useTableData(searchText);
 
   if (isLoading) {
     return (
@@ -22,8 +21,12 @@ const TableSection = () => {
 
   return (
     <>
-      <TableTopSection data={data} setData={setData} tableData={tableData} />
-      <Table data={data} />
+      <TableTopSection
+        data={tableData}
+        searchText={searchText}
+        setSearchText={setSearchText}
+      />
+      <Table data={tableData} />
     </>
   );
 };

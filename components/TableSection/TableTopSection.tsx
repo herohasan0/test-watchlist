@@ -3,14 +3,14 @@ import Search from "../Search";
 
 interface TableTopSectionProps {
   data: any;
-  setData: React.Dispatch<React.SetStateAction<any>>;
-  tableData: any;
+  setSearchText: React.Dispatch<React.SetStateAction<any>>;
+  searchText: string;
 }
 
 const TableTopSection: FC<TableTopSectionProps> = ({
-  tableData,
-  setData,
   data,
+  searchText,
+  setSearchText,
 }) => (
   <div className="flex items-center justify-between">
     <div className="flex items-center space-x-2">
@@ -38,7 +38,7 @@ const TableTopSection: FC<TableTopSectionProps> = ({
         ({data?.length})Stocks
       </div>
     </div>
-    <Search tableData={tableData} setData={setData} />
+    <Search searchText={searchText} setSearchText={setSearchText} />
   </div>
 );
 

@@ -6,6 +6,7 @@ export const getTableData = (symbols: string[]) => {
   return {
     queryKey: ["tableData", symbols],
     queryFn: async () => {
+      console.log("aha");
       const responses = await Promise.all(
         symbols.map((symbol: string) => {
           return TABLE_DATA[symbol as keyof typeof TABLE_DATA];
