@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import SelectDropdown from "../SelectDropdown";
 
 const Stocks = [
@@ -31,12 +31,24 @@ const Options = [
   },
 ];
 
-export default function SelectionSection({
+interface DropdownOption {
+  label: string;
+  value: string | number;
+}
+
+interface SelectionSectionProps {
+  stocksSelected: DropdownOption;
+  optionsSelected: DropdownOption;
+  stocksSelectionHandler: () => void;
+  optionsSelectionHandler: () => void;
+}
+
+const SelectionSection: FC<SelectionSectionProps> = ({
   stocksSelected,
   stocksSelectionHandler,
   optionsSelected,
   optionsSelectionHandler,
-}: any) {
+}) => {
   return (
     <div className="flex space-x-2">
       <div className="w-3/4">
@@ -56,4 +68,6 @@ export default function SelectionSection({
       </div>
     </div>
   );
-}
+};
+
+export default SelectionSection;

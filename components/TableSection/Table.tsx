@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 import {
@@ -45,7 +45,7 @@ const columns = [
   }),
 ];
 
-const Table = ({ data }: Props) => {
+const Table: FC<Props> = ({ data }) => {
   const table = useReactTable({
     data: data ?? [],
     columns,

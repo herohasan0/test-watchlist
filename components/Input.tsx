@@ -1,12 +1,12 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, FC } from "react";
 
-type InputType = {
+interface InputProps {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
-};
+}
 
-export default function Input({ value, onChange, placeholder }: InputType) {
+const Input: FC<InputProps> = ({ value, onChange, placeholder }) => {
   return (
     <input
       value={value}
@@ -16,4 +16,6 @@ export default function Input({ value, onChange, placeholder }: InputType) {
       placeholder={placeholder}
     />
   );
-}
+};
+
+export default Input;

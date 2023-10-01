@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
+import React, { FC, useRef } from "react";
 import * as Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-export default function Chart(props: HighchartsReact.Props) {
-  console.log("props", props);
+const Chart: FC<HighchartsReact.Props> = (props) => {
   const options: Highcharts.Options = {
     tooltip: {
       valueDecimals: 2,
@@ -30,4 +29,6 @@ export default function Chart(props: HighchartsReact.Props) {
       />
     </div>
   );
-}
+};
+
+export default Chart;

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, FC, useEffect, useState } from "react";
 import Input from "./Input";
 import useDebounce from "@/repo/main/utils/useDebounce";
 
@@ -7,7 +7,7 @@ interface SearchProps {
   tableData: any[];
 }
 
-export default function Search({ tableData, setData }: SearchProps) {
+const Search: FC<SearchProps> = ({ tableData, setData }) => {
   const [searchText, setSearchText] = useState("");
 
   const debouncedText = useDebounce<string>(searchText, 500);
@@ -29,4 +29,6 @@ export default function Search({ tableData, setData }: SearchProps) {
   return (
     <Input placeholder="Search" value={searchText} onChange={searchHandler} />
   );
-}
+};
+
+export default Search;

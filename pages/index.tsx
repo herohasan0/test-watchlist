@@ -9,7 +9,7 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-export default function Home() {
+const index = () => {
   return (
     <main
       className={`flex flex-col items-center space-y-4 mt-4 px-8 max-w-[1300px] mx-auto ${roboto.className}`}
@@ -22,4 +22,6 @@ export default function Home() {
       </Container>
     </main>
   );
-}
+};
+
+export default index;

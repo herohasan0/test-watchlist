@@ -1,12 +1,11 @@
-import React, { ReactNode, useState } from "react";
+import React, { FC, ReactNode, useState } from "react";
 
-export default function HoverContext({
-  children,
-  hoverText,
-}: {
+interface HoverContextProps {
   children: ReactNode;
   hoverText: string;
-}) {
+}
+
+const HoverContext: FC<HoverContextProps> = ({ children, hoverText }) => {
   const [style, setStyle] = useState({ display: "none" });
   return (
     <div
@@ -27,4 +26,6 @@ export default function HoverContext({
       </div>
     </div>
   );
-}
+};
+
+export default HoverContext;

@@ -1,19 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
 import SelectionSection from "./SelectionSection";
 
-interface Props {
+interface ChartTopSectionProps {
   optionsSelected: any;
   stocksSelected: any;
   stocksSelectionHandler: any;
   optionsSelectionHandler: any;
 }
 
-const ChartTopSection = ({
+const ChartTopSection: FC<ChartTopSectionProps> = ({
   optionsSelected,
   stocksSelected,
   stocksSelectionHandler,
   optionsSelectionHandler,
-}: Props) => {
+}) => {
   return (
     <div className="flex items-center justify-between mb-8">
       <div className="flex items-center space-x-2 w-full">

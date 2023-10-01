@@ -1,7 +1,13 @@
-import React, { ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 
-export default function Container({ children }: { children: ReactNode }) {
+interface ContainerProps {
+  children: ReactNode;
+}
+
+const Container: FC<ContainerProps> = ({ children }) => {
   return (
     <div className="shadow-md bg-white rounded-2xl p-8 w-full ">{children}</div>
   );
-}
+};
+
+export default Container;

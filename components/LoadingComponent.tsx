@@ -1,7 +1,9 @@
-export function LoadingComponent({ mainColor = "#5951FF" }) {
+import React from "react";
+
+const LoadingComponent = () => {
   return (
     <svg
-      style={{ stroke: mainColor }}
+      style={{ stroke: "#5951FF" }}
       className="w-16 h-16 mx-auto"
       width="24"
       height="24"
@@ -13,4 +15,6 @@ export function LoadingComponent({ mainColor = "#5951FF" }) {
       </g>
     </svg>
   );
-}
+};
+
+export default LoadingComponent;

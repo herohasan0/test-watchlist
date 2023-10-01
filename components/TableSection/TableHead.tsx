@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 
-type Props = {
+interface Props {
   table: any;
   flexRender: any;
-};
+}
 
 const TableHead: FC<Props> = ({ table, flexRender }) => {
   return (

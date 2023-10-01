@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ChartTopSection from "./ChartTopSection";
 import Chart from "./Chart";
 import { useChartData } from "@/repo/main";
-import { LoadingComponent } from "../LoadingComponent";
+import LoadingComponent from "../LoadingComponent";
 
 interface Props {
   data: any;

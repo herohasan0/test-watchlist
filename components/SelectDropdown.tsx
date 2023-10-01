@@ -1,31 +1,33 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, FC } from "react";
 import Select, { ActionMeta, MultiValue, SingleValue } from "react-select";
 
-type Option = {
+interface SelectDropdownOption {
   label: string;
-  value: string;
-};
+  value: string | number;
+}
 
-type Dropdown = {
-  options: Option[];
-  defaultSelect: Option;
+interface SelectDropdownProps {
+  options: SelectDropdownOption[];
+  defaultSelect: SelectDropdownOption;
   handleChange:
     | ((
-        newValue: MultiValue<Option> | SingleValue<Option>,
-        actionMeta: ActionMeta<Option>
+        newValue:
+          | MultiValue<SelectDropdownOption>
+          | SingleValue<SelectDropdownOption>,
+        actionMeta: ActionMeta<SelectDropdownOption>
       ) => void)
     | undefined;
   isMulti?: boolean;
   placeholder?: string;
-};
+}
 
-const SelectDropdown = ({
+const SelectDropdown: FC<SelectDropdownProps> = ({
   options,
   defaultSelect,
   handleChange,
   isMulti = false,
   placeholder = "Select...",
-}: Dropdown) => {
+}) => {
   return (
     <Select
       isMulti={isMulti}

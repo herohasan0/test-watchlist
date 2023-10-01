@@ -3,9 +3,9 @@ import TableTopSection from "./TableTopSection";
 import Table from "./Table";
 // import useChartData from "@/repo/main/hooks/useChartData";
 import { useTableData } from "@/repo/main";
-import { LoadingComponent } from "../LoadingComponent";
+import LoadingComponent from "../LoadingComponent";
 
-export default function TableSection() {
+const TableSection = () => {
   const { data: tableData, isLoading, isError } = useTableData();
 
   const [data, setData] = useState(tableData);
@@ -26,4 +26,6 @@ export default function TableSection() {
       <Table data={data} />
     </>
   );
-}
+};
+
+export default TableSection;
