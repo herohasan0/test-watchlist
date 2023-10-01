@@ -1,10 +1,6 @@
-import React, { ChangeEvent, FC, useEffect, useState } from "react";
+import React, { ChangeEvent, FC } from "react";
 import Input from "./Input";
-
-interface SearchProps {
-  setSearchText: React.Dispatch<React.SetStateAction<any>>;
-  searchText: string;
-}
+import { SearchProps } from "@/repo/main";
 
 const Search: FC<SearchProps> = ({ searchText, setSearchText }) => {
   const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {

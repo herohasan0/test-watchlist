@@ -1,10 +1,5 @@
-import React, { ChangeEvent, FC } from "react";
-
-interface InputProps {
-  value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-}
+import { InputProps } from "@/repo/main";
+import React, { FC } from "react";
 
 const Input: FC<InputProps> = ({ value, onChange, placeholder }) => {
   return (

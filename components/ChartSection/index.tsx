@@ -1,25 +1,21 @@
 import React, { useState } from "react";
 import ChartTopSection from "./ChartTopSection";
 import Chart from "./Chart";
-import { SelectDropdownOption, useChartData } from "@/repo/main";
+import {
+  INSIGHTS_OPTIONS,
+  SYMBOLS_OPTIONS,
+  SelectDropdownOption,
+  useChartData,
+} from "@/repo/main";
 import LoadingComponent from "../LoadingComponent";
 
 const ChartSection = () => {
-  const [optionsSelected, setOptionsSelected] = useState<SelectDropdownOption>({
-    label: "Open",
-    value: "open",
-  });
+  const [optionsSelected, setOptionsSelected] = useState<SelectDropdownOption>(
+    INSIGHTS_OPTIONS[0]
+  );
 
-  const [stocksSelected, setStocksSelected] = useState<SelectDropdownOption[]>([
-    {
-      label: "AAPL",
-      value: "AAPL",
-    },
-    {
-      label: "IBM",
-      value: "IBM",
-    },
-  ]);
+  const [stocksSelected, setStocksSelected] =
+    useState<SelectDropdownOption[]>(SYMBOLS_OPTIONS);
 
   const { data, isLoading, isError } = useChartData();
 

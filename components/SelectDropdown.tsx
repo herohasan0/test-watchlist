@@ -1,33 +1,6 @@
-import React, { ChangeEvent, FC } from "react";
-import Select, { ActionMeta, MultiValue, SingleValue } from "react-select";
-
-interface SelectDropdownOption {
-  label: string;
-  value: string | number;
-}
-
-interface SelectDropdownProps {
-  options: SelectDropdownOption[];
-  defaultSelect: SelectDropdownOption | SelectDropdownOption[];
-  handleChange:
-    | ((
-        newValue:
-          | MultiValue<SelectDropdownOption>
-          | SingleValue<SelectDropdownOption>,
-        actionMeta?: ActionMeta<SelectDropdownOption>
-      ) => void)
-    | undefined;
-  //   handleChange:
-  // | ((
-  //         newValue:
-  //           | MultiValue<SelectDropdownOption>
-  //           | SingleValue<SelectDropdownOption>,
-  //         actionMeta: ActionMeta<SelectDropdownOption>
-  //       ) => void)
-  //     | undefined;
-  isMulti?: boolean;
-  placeholder?: string;
-}
+import React, { FC } from "react";
+import Select from "react-select";
+import { SelectDropdownProps } from "@/repo/main";
 
 const SelectDropdown: FC<SelectDropdownProps> = ({
   options,

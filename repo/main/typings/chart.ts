@@ -14,3 +14,14 @@ export interface ChartTopSectionProps {
   stocksSelectionHandler: (e: SelectDropdownOption[]) => void;
   optionsSelectionHandler: (e: SelectDropdownOption) => void;
 }
+
+export interface SelectionSectionProps {
+  stocksSelected: SelectDropdownOption[];
+  optionsSelected: SelectDropdownOption;
+  // stocksSelectionHandler: (newValue: MultiValue<SelectDropdownOption>) => void;
+  stocksSelectionHandler: any;
+  optionsSelectionHandler: any;
+  // optionsSelectionHandler: (
+  //   newValue: SingleValue<SelectDropdownOption>
+  // ) => void;
+}

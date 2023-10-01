@@ -1,9 +1,5 @@
-import React, { FC, ReactNode, useState } from "react";
-
-interface HoverContextProps {
-  children: ReactNode;
-  hoverText: string;
-}
+import React, { FC, useState } from "react";
+import { HoverContextProps } from "@/repo/main";
 
 const HoverContext: FC<HoverContextProps> = ({ children, hoverText }) => {
   const [style, setStyle] = useState({ display: "none" });

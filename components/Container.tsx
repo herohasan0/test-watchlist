@@ -1,8 +1,5 @@
-import React, { FC, ReactNode } from "react";
-
-interface ContainerProps {
-  children: ReactNode;
-}
+import React, { FC } from "react";
+import { ContainerProps } from "@/repo/main";
 
 const Container: FC<ContainerProps> = ({ children }) => {
   return (
