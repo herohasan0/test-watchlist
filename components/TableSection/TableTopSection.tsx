@@ -9,7 +9,7 @@ const TableTopSection: FC<TableTopSectionProps> = ({
   setSearchText,
 }) => (
   <div className="flex items-center justify-between">
-    <LeftSide dataLength={data.length} />
+    <LeftSide dataLength={data?.length ?? 0} />
     <Search searchText={searchText} setSearchText={setSearchText} />
   </div>
 );

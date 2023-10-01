@@ -31,7 +31,7 @@ const ChartSection = () => {
 
   const xAxis = data.AAPL.xAxis;
 
-  const series: any = stocksSelected.map((symbol) => {
+  const series = stocksSelected.map((symbol) => {
     const selectedData = data[symbol.value][optionsSelected.value].map(
       (a: string) => parseFloat(a)
     );

@@ -1,3 +1,4 @@
+import { Table } from "@tanstack/react-table";
 import { Dispatch, SetStateAction } from "react";
 
 export interface TableRow {
@@ -42,7 +43,7 @@ export interface TableComponentProps {
 }
 
 export interface TableBodyProps {
-  table: any;
+  table: Table<any>;
   flexRender: any;
 }
 
@@ -51,12 +52,12 @@ export interface TableCellProps {
 }
 
 export interface TableHeadProps {
-  table: any;
+  table: Table<any>;
   flexRender: any;
 }
 
 export interface TableTopSectionProps {
-  data: any;
+  data: TableRow[] | undefined;
   setSearchText: Dispatch<SetStateAction<any>>;
   searchText: string;
 }
