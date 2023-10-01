@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Search from "../Search";
-import Image from "next/image";
+import LeftSide from "./LeftSide";
 
 interface TableTopSectionProps {
   data: any;
@@ -14,13 +14,7 @@ const TableTopSection: FC<TableTopSectionProps> = ({
   setSearchText,
 }) => (
   <div className="flex items-center justify-between">
-    <div className="flex items-center space-x-2">
-      <Image alt="Table" src="/icons/pie-chart.svg" width={24} height={24} />
-      <span className="text-xl font-bold">Watchlist</span>
-      <div className="font-bold bg-[#ebedef]/40 px-2 py-1 rounded-md">
-        ({data?.length})Stocks
-      </div>
-    </div>
+    <LeftSide dataLength={data.length} />
     <Search searchText={searchText} setSearchText={setSearchText} />
   </div>
 );

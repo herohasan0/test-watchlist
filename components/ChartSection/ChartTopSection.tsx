@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import SelectionSection from "./SelectionSection";
-import Image from "next/image";
+import LeftSide from "./LeftSide";
 
 interface Option {
   label: string;
@@ -22,15 +22,7 @@ const ChartTopSection: FC<ChartTopSectionProps> = ({
 }) => {
   return (
     <div className="flex items-center justify-between mb-8">
-      <div className="flex items-center space-x-2 w-full">
-        <Image
-          src={"/icons/line-chart.svg"}
-          alt="Chart"
-          width={24}
-          height={24}
-        />
-        <span className="text-xl font-bold">My Chart</span>
-      </div>
+      <LeftSide />
       <div className="w-full max-w-md">
         <SelectionSection
           optionsSelected={optionsSelected}
