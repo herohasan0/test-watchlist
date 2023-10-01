@@ -43,12 +43,12 @@ const ChartSection = () => {
     };
   });
 
-  const stocksSelectionHandler = (e: SelectDropdownOption[]) => {
-    setStocksSelected(e);
+  const stocksSelectionHandler = (newValue: any) => {
+    setStocksSelected(newValue);
   };
 
-  const optionsSelectionHandler = (e: SelectDropdownOption) => {
-    setOptionsSelected(e);
+  const optionsSelectionHandler = (newValue: any) => {
+    setOptionsSelected(newValue);
   };
 
   return (

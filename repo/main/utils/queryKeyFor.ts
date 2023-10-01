@@ -1,20 +1,10 @@
-interface QueryKey {
-  operation: string;
-  resourceType?: string;
-  resourceId?: number;
-  params: Record<string, any>;
-}
+import { QueryKey } from "@/repo/main";
 
 export function queryKeyFor({
   operation,
   resourceType,
   resourceId,
   params,
-}: QueryKey): [
-  string,
-  string | undefined,
-  number | undefined,
-  Record<string, any>
-] {
+}: QueryKey): [string, string | undefined, number | undefined, string[]] {
   return [operation, resourceType, resourceId, params];
 }

@@ -58,6 +58,6 @@ export interface TableHeadProps {
 
 export interface TableTopSectionProps {
   data: TableRow[] | undefined;
-  setSearchText: Dispatch<SetStateAction<any>>;
+  setSearchText: Dispatch<SetStateAction<string>>;
   searchText: string;
 }

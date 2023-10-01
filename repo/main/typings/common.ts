@@ -22,7 +22,7 @@ export interface InputProps {
 }
 
 export interface SearchProps {
-  setSearchText: React.Dispatch<React.SetStateAction<any>>;
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
   searchText: string;
 }
 
@@ -47,4 +47,11 @@ export interface SelectDropdownProps {
   //     | undefined;
   isMulti?: boolean;
   placeholder?: string;
+}
+
+export interface QueryKey {
+  operation: string;
+  resourceType?: string;
+  resourceId?: number;
+  params: string[];
 }
